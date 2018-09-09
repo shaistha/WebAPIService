@@ -33,13 +33,17 @@ namespace MVCClient.Controllers
         public async Task<JsonResult> ReadJsonData(CarDetails inputValue)
         {
             var id = inputValue.Data.First().ToString();
+            //async calls to the Api service using URL 
             HttpResponseMessage responseMessage = await _client.GetAsync(url + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+
+                //Deserialize the json data received from the API
                 var data1 = JsonConvert.DeserializeObject<string>(responseData);
                 var data = JsonConvert.DeserializeObject<CarDetails>(data1);
 
+                //Write Json data to the fi
                 System.IO.File.WriteAllText(@"D:\jsonData.json", data.Data.ToString());
 
                 using (StreamWriter file = System.IO.File.CreateText(@"D:\jsonData.json"))
@@ -47,6 +51,7 @@ namespace MVCClient.Controllers
                     using (JsonTextWriter writer = new JsonTextWriter(file))
                     {
                         JsonSerializer serializer = new JsonSerializer();
+                        serializer.Formatting = Formatting.Indented;
                         serializer.Serialize(file, data);
                     }
                 }

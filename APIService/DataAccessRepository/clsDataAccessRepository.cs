@@ -15,24 +15,37 @@ namespace APIService.DataAccessRepository
         public string LoadJsonFromFile(string value)
         {
             Car detailsData;
+            //Read json from json file from D drive. Sample json is on git
             using (StreamReader file = File.OpenText(@"D:\jsonData.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
+
+                //deserialize json data to check if the input value is A-A-A or A-A 
                 detailsData = (Car)serializer.Deserialize(file, typeof(Car));
-                if(value == "A-A-A")
+
+                if (value == "A-A-A")
                 {
-                    detailsData.data[0] = "Fiat";
-                    detailsData.data[1] = "BMW";
-                    detailsData.data[2] = "Ford";
+                    //if input is A-A-A -> reverse the priority in json array
+                    detailsData.data.Reverse();
+                    
+                    //serialize the json data to send it over to the client
                     return JsonConvert.SerializeObject(detailsData);
                 }
-                else if(value == "A-A")
+                else if (value == "A-A")
                 {
-                    detailsData.data[0] = "BMW";
-                    detailsData.data[1] = "Ford";
-                    detailsData.data[2] = "Fiat";
+                    //Storing the first element of array in a temporary variable
+                    var tempData = detailsData.data[0];
+                    
+                    //assign second element of array to be the first element.
+                    detailsData.data[0] = detailsData.data[1];
+
+                    //Assign value stored in temporary variable to be the second element
+                    detailsData.data[1] = tempData;
+                    detailsData.data[2] = detailsData.data[2];
+
                     return JsonConvert.SerializeObject(detailsData);
                 }
+
                 return JsonConvert.SerializeObject(detailsData);
             }
         }
