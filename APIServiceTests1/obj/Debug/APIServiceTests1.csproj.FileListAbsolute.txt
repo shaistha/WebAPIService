@@ -70,7 +70,6 @@ C:\GitHubAPIService\WebAPIService\APIServiceTests1\bin\Debug\System.ValueTuple.d
 C:\GitHubAPIService\WebAPIService\APIServiceTests1\bin\Debug\System.Web.Optimization.dll
 C:\GitHubAPIService\WebAPIService\APIServiceTests1\bin\Debug\System.Web.Mvc.dll
 C:\GitHubAPIService\WebAPIService\APIServiceTests1\bin\Debug\Microsoft.Practices.Unity.dll
-C:\GitHubAPIService\WebAPIService\APIServiceTests1\bin\Debug\System.Web.Http.dll
 C:\GitHubAPIService\WebAPIService\APIServiceTests1\bin\Debug\System.Web.Http.WebHost.dll
 C:\GitHubAPIService\WebAPIService\APIServiceTests1\bin\Debug\Unity.WebApi.dll
 C:\GitHubAPIService\WebAPIService\APIServiceTests1\bin\Debug\Microsoft.Web.Infrastructure.dll

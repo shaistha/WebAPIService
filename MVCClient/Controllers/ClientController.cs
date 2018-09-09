@@ -43,7 +43,7 @@ namespace MVCClient.Controllers
                 var data1 = JsonConvert.DeserializeObject<string>(responseData);
                 var data = JsonConvert.DeserializeObject<CarDetails>(data1);
 
-                //Write Json data to the fi
+                //Write Json data to the file
                 System.IO.File.WriteAllText(@"D:\jsonData.json", data.Data.ToString());
 
                 using (StreamWriter file = System.IO.File.CreateText(@"D:\jsonData.json"))
