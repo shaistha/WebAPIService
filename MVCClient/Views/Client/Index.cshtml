@@ -1,0 +1,22 @@
+﻿@model MVCClient.Models.CarDetails
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    @using (Html.BeginForm("ReadJsonData", "Client", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.TextBoxFor(model => model.Data)
+        <input type="submit" id="btnSubmit" value="Submit" class="btn btn-success btn-lg" />
+    }
+
+</div>
+
+
+<div id="cars"> </div>
+
